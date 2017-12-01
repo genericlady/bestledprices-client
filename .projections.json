@@ -1,0 +1,6 @@
+{
+  "src/components/*index.jsx": {"type": "index"},
+  "src/components/*action.js": {"type": "action"},
+  "src/components/*reducer.js": {"type": "reducer"},
+  "src/components/*container.js": {"type": "container"}
+}
