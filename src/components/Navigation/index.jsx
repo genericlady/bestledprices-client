@@ -35,9 +35,6 @@ export default class Navigation extends React.Component {
               <NavItem>
                 <Search getPrices={getPrices} handleChange={handleChange} />
               </NavItem>
-              <NavItem>
-                <NavLink href="https://google.com">About</NavLink>
-              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>

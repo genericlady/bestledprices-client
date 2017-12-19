@@ -2,6 +2,10 @@
 - [x] table
 - [x] search box
 - [x] search handler will populate state
+- [ ] scrape photos from adafruit and add photos to the table
+- [ ] webscraper for tinkersphere
+- [ ] sort by most popular from the server
+- [x] add filters for sorting by name, price, relevance
 
 # Steps
 - [x] stub out data in table

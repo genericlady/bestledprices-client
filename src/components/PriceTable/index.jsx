@@ -9,9 +9,9 @@ export default class PriceTable extends React.Component {
       priceList = [],
     } = this.props;
 
-    const rows = priceList.map(({ description, price, href }, index) => (
+    const rows = priceList.map(({ image, description, price, href }, index) => (
       <tr key={uid()}>
-        <th scope="row">{index + 1}</th>
+        <th scope="row"><img src={image} alt={description} /></th>
         <td>{description}</td>
         <td>{price}</td>
         <td><a href={href}>link to product</a></td>
@@ -22,7 +22,7 @@ export default class PriceTable extends React.Component {
       <Table hover>
         <thead>
           <tr>
-            <th>#</th>
+            <th>Image</th>
             <th>Description</th>
             <th>Price</th>
             <th>Href</th>
