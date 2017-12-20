@@ -2,9 +2,9 @@
 - [x] table
 - [x] search box
 - [x] search handler will populate state
-- [ ] scrape photos from adafruit and add photos to the table
-- [ ] webscraper for tinkersphere
-- [ ] sort by most popular from the server
+- [x] scrape photos from adafruit and add photos to the table
+- [x] webscraper for tinkersphere
+- [x] sort by most popular from the server
 - [x] add filters for sorting by name, price, relevance
 
 # Steps
@@ -23,3 +23,7 @@
 }
 ```
 
+# Important
+Putting all the business logic inside of App.js is *NOT* a good idea.
+This was done cowbow style, just shooting from the hip. Use better directory
+structures like one in https://github.com/genericlady/clothing_scraper
