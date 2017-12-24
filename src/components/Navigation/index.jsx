@@ -1,7 +1,4 @@
 import React from 'react';
-import PropTypes from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
-import Search from './Search/';
 
 export default class Navigation extends React.Component {
   constructor(props) {
@@ -26,19 +23,28 @@ export default class Navigation extends React.Component {
     } = this.props;
 
     return (
-      <div>
-        <Navbar color="faded" light expand="md">
-          <NavbarBrand href="/">LED Pricewatcher</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <Search getPrices={getPrices} handleChange={handleChange} />
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </div>
+			<nav className="navbar navbar-expand-lg navbar-light bg-light">
+			  <a className="navbar-brand">Best LED Prices</a>
+			  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+			    <span className="navbar-toggler-icon"></span>
+			  </button>
+			
+			  <div className="collapse navbar-collapse" id="navbarColor03">
+			    <ul className="navbar-nav mr-auto">
+			    </ul>
+			    <form className="form-inline my-2 my-lg-0">
+          	<input
+              className="form-control mr-sm-2"
+              type="text"
+              placeholder="Search"
+          	  onChange={(event) => handleChange(event)}
+          	/>
+			      <button onClick={(event) => getPrices(event)} className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            
+			    </form>
+			  </div>
+			</nav>
+
     );
   }
 }

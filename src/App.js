@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Navigation from './components/Navigation/';
-import PriceTable from './components/PriceTable/';
+import PriceList from './components/PriceList/';
 import { isEmpty } from 'lodash';
 import { Button, ButtonGroup } from 'reactstrap';
 
@@ -13,7 +12,8 @@ class App extends Component {
     query: '',
   }
 
-  getPrices = () => {
+  getPrices = (event) => {
+    event.preventDefault();
     const {
       query = '',
     } = this.state;
@@ -41,12 +41,12 @@ class App extends Component {
     switch (type) {
       case 'priceLowToHigh':
         return this.setState({
-          filteredList: priceList.slice().sort((p1, p2) =>
+          filteredList: filteredList.slice().sort((p1, p2) =>
             Number(p1.price.replace(/\$/, '')) - Number(p2.price.replace(/\$/, '')))
         });
       case 'priceHighToLow':
         return this.setState({
-          filteredList: priceList.slice().sort((p1, p2) =>
+          filteredList: filteredList.slice().sort((p1, p2) =>
             Number(p2.price.replace(/\$/, '')) - Number(p1.price.replace(/\$/, '')))
         });
       default:
@@ -64,13 +64,13 @@ class App extends Component {
         <Navigation getPrices={this.getPrices} handleChange={this.handleChange}/>
         {
           !isEmpty(filteredList) &&
-            <div>
-              <ButtonGroup>
-                <Button onClick={() => this.sortBy('relevance')}>Relevance</Button>{' '}
-                <Button onClick={() => this.sortBy('priceLowToHigh')}>Price Low to High</Button>{' '}
-                <Button onClick={() => this.sortBy('priceHighToLow')}>Price High to Low</Button>
-              </ButtonGroup>
-              <PriceTable priceList={filteredList} />
+            <div className="text-center">
+              <div className="btn-group" role="group" aria-label="Filter">
+                <button onClick={() => this.sortBy('relevance')} type="button" className="btn btn-secondary">Relevance</button>
+                <button onClick={() => this.sortBy('priceLowToHigh')} type="button" className="btn btn-secondary">$ - $$$$</button>
+                <button onClick={() => this.sortBy('priceHighToLow')} type="button" className="btn btn-secondary">$$$$ - $</button>
+              </div>
+              <PriceList priceList={filteredList} />
             </div>
         }
       </div>

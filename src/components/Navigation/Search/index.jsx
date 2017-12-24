@@ -9,19 +9,6 @@ export default class Search extends React.Component {
     } = this.props;
 
     return (
-      <div>
-        <InputGroup>
-          <Input
-            onChange={(event) => handleChange(event)}
-          />
-          <InputGroupButton
-            color="secondary"
-            onClick={() => getPrices()}
-          >
-            Search
-          </InputGroupButton>
-        </InputGroup>
-      </div>
     );
   }
 };
