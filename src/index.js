@@ -5,7 +5,6 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import './assets/lux-bootstrap.css';
 import './assets/lux.min.css';
-import './custom.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
