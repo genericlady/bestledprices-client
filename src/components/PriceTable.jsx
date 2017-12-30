@@ -9,7 +9,7 @@ export default class PriceTable extends React.Component {
       priceList = [],
     } = this.props;
 
-    const rows = priceList.map(({ image, description, price, href }, index) => (
+    const rows = priceList.map(({ image, description, price, href }) => (
       <tr key={uid()}>
         <th scope="row"><img src={image} alt={description} /></th>
         <td>{description}</td>

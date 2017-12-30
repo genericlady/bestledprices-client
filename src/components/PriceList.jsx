@@ -1,6 +1,6 @@
 import React from 'react';
 import uid from 'uid';
-import Card from '../shared/card';
+import Card from './Card';
 import { chunk } from 'lodash';
 
 export default class PriceTable extends React.Component {
@@ -24,7 +24,7 @@ export default class PriceTable extends React.Component {
       }
 
       return (
-        <div className="card-group">
+        <div className="card-group" key={uid()}>
         {
           group.map((card) => (<Card card={card} key={uid()} />))
         }
