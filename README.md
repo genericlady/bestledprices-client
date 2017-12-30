@@ -22,8 +22,3 @@
   :href=>"https://www.adafruit.com/product/2756",
 }
 ```
-
-# Important
-Putting all the business logic inside of App.js is *NOT* a good idea.
-This was done cowbow style, just shooting from the hip. Use better directory
-structures like one in https://github.com/genericlady/clothing_scraper
