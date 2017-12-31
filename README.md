@@ -1,5 +1,5 @@
 # To Build
-- [ ] Move Filter to a Sidebar
+- [x] Move Filter to a Sidebar
 - [ ] Add layout options to sidebar
   - [ ] Layout options should be table or grid
   - [ ] add an additional layout of single column cards
