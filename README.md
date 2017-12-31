@@ -7,6 +7,8 @@
       the api thus saving us from
       scraping data and speeding
       up development
+- [ ] Add setup instructions to README
+- [ ] Add extra details as necessary to README
 
 the following will first be stubbed out and done
 in React before adding to the backend.
