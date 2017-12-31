@@ -1,58 +1,42 @@
 import React from 'react';
-import { arrayOf, shape } from 'prop-types';
-import uid from 'uid';
-import Card from './Card';
-import { chunk } from 'lodash';
+import { string, arrayOf, shape } from 'prop-types';
+import PriceGrid from './PriceGrid';
+import PriceTable from './PriceTable';
 
-export default class PriceTable extends React.Component {
+export default class PriceList extends React.Component {
   static defaultProps = {
     priceList: [{}],
+    layout: '',
   }
 
   static propTypes = {
     priceList: arrayOf(shape()).isRequired,
+    layout: string.isRequired,
   }
 
   render() {
     const {
       priceList,
+      layout,
     } = this.props;
 
-    const groups = chunk(priceList, 3);
-    const cards = groups.map((group) => {
-      /**
-       * This logic ensures each group has 3 elements in it for better
-       * layout consistency. Otherwise if it's an odd number the final
-       * one or two cards are going to be bigger than the rest.
-       */
-      const count = 3 - group.length;
-      if (count !== 0) {
-        for (let i=1; i <= count; i++) {
-          group.push({ image: '', description: '', price: '', href: '', merchant: ''});
-        }
-      }
-
-      return (
-        <div className="card-group" key={uid()}>
-        {
-          group.map(({ image, description, price, href, merchant, }) => (
-            <Card
-              image={image}
-              description={description}
-              price={price}
-              href={href}
-              merchant={merchant}
-              key={uid()}
-            />
-          ))
-        }
-        </div>
-      );
-    });
+    /**
+     * There should be a conditional render for
+     * a const of list. We can use a 
+     * layout factory to render the list as
+     * grid or table.
+     */
 
     return (
       <div>
-        {cards}
+      {
+        layout === 'grid' &&
+          <PriceGrid priceList={priceList} />
+      }
+      {
+        layout === 'table' &&
+          <PriceTable priceList={priceList} />
+      }
       </div>
     );
   }

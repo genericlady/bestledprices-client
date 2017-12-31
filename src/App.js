@@ -4,6 +4,7 @@ import './App.css';
 import Navigation from './components/Navigation';
 import PriceList from './components/PriceList';
 import Filter from './components/Filter';
+import LayoutOptions from './components/LayoutOptions';
 import { fetchPrices } from './utilities/';
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
     filteredList: [],
     query: '',
     loading: true,
+    layout: 'grid',
   }
 
   setLists = (priceList) => {
@@ -31,6 +33,10 @@ class App extends Component {
     this.setState({ loading: true });
     fetchPrices(query).then(({ priceList }) => this.setLists(priceList));
   };
+
+  setLayout = (layout) => {
+    this.setState({ layout });
+  }
 
   componentDidMount() {
     const randomQuery = shuffle([
@@ -61,6 +67,7 @@ class App extends Component {
       priceList,
       filteredList,
       loading,
+      layout,
     } = this.state;
 
     return (
@@ -68,7 +75,7 @@ class App extends Component {
         <Navigation getPrices={this.getPrices} handleChange={this.handleChange}/>
         {
           loading &&
-            <div>
+            <div classNames="pt-3">
               <h1 className="text-center">Loading...</h1>
               <div className="text-center">
                 <img
@@ -82,12 +89,14 @@ class App extends Component {
           (!isEmpty(filteredList) && !loading) &&
             <div className="row">
               <div className="col-md-9">
-                <PriceList priceList={filteredList}/>
+                <PriceList priceList={filteredList} layout={layout} />
               </div>
-              <div className="text-center col-md-2">
+              <div className="text-center col-md-2 pt-3">
                 <Filter
                   priceList={priceList}
-                  updateFilteredPriceList={this.updateFilteredPriceList} />
+                  updateFilteredPriceList={this.updateFilteredPriceList}
+                />
+                <LayoutOptions layout={layout} setLayout={this.setLayout} />
               </div>
             </div>
         }
