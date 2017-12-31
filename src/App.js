@@ -72,7 +72,7 @@ class App extends Component {
               <h1 className="text-center">Loading...</h1>
               <div className="text-center">
                 <img
-                  src="https://media.giphy.com/media/10NI9u4qOWNdmw/giphy.gif"
+                  src="https://i.giphy.com/10NI9u4qOWNdmw.gif"
                   alt="loading"
                 />
               </div>
