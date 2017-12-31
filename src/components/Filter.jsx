@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
+import { arrayOf, shape, func } from 'prop-types';
 import uid from 'uid';
 import classNames from 'classnames'
 
 class Filter extends Component {
+  static defaultProps = {
+    priceList: [],
+    updateFilteredPriceList: () => {},
+  }
+
+  static propTypes = {
+    priceList: arrayOf(shape()),
+    updateFilteredPriceList: func,
+  }
+
   state = {
     selectedButton: 0,
   }
@@ -17,8 +28,8 @@ class Filter extends Component {
 
   sortBy = (type, { target: { value } }) => {
     const {
-      priceList = [],
-      updateFilteredPriceList = () => {},
+      priceList,
+      updateFilteredPriceList,
     } = this.props;
     this.setState({ selectedButton: Number(value) });
 
