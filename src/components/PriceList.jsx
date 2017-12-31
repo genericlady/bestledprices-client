@@ -26,7 +26,22 @@ export default class PriceTable extends React.Component {
       return (
         <div className="card-group" key={uid()}>
         {
-          group.map((card) => (<Card card={card} key={uid()} />))
+          group.map(({
+            image,
+            description,
+            price,
+            href,
+            merchant,
+          }) => (
+            <Card
+              image={image}
+              description={description}
+              price={price}
+              href={href}
+              merchant={merchant}
+              key={uid()}
+            />
+          ))
         }
         </div>
       );

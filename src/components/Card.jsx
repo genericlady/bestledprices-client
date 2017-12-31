@@ -1,14 +1,12 @@
 import React from 'react';
 
-const Card = props => {
-  const {
-    image,
-    description,
-    price,
-    href,
-    merchant,
-  } = props.card;
-
+const Card = ({
+  image = '',
+  description = '',
+  price = '',
+  href = '',
+  merchant = '',
+}) => {
   return (
     <div className="card">
       <a href={href} className="card-link">
