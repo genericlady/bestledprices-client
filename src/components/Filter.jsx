@@ -10,8 +10,8 @@ class Filter extends Component {
   }
 
   static propTypes = {
-    priceList: arrayOf(shape()),
-    updateFilteredPriceList: func,
+    priceList: arrayOf(shape()).isRequired,
+    updateFilteredPriceList: func.isRequired,
   }
 
   state = {
