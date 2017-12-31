@@ -8,6 +8,13 @@
       scraping data and speeding
       up development
 
+the following will first be stubbed out and done
+in React before adding to the backend.
+- [ ] add rating
+- [ ] add comments
+- [ ] add signup
+- [ ] add signin
+
 # Things Built
 - [x] Move Filter to a Sidebar
 - [x] Add layout options to sidebar
