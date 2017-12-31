@@ -1,12 +1,21 @@
 import React from 'react';
+import { arrayOf, shape } from 'prop-types';
 import uid from 'uid';
 import Card from './Card';
 import { chunk } from 'lodash';
 
 export default class PriceTable extends React.Component {
+  static defaultProps = {
+    priceList: [{}],
+  }
+
+  static propTypes = {
+    priceList: arrayOf(shape()).isRequired,
+  }
+
   render() {
     const {
-      priceList = [{}],
+      priceList,
     } = this.props;
 
     const groups = chunk(priceList, 3);
@@ -26,13 +35,7 @@ export default class PriceTable extends React.Component {
       return (
         <div className="card-group" key={uid()}>
         {
-          group.map(({
-            image,
-            description,
-            price,
-            href,
-            merchant,
-          }) => (
+          group.map(({ image, description, price, href, merchant, }) => (
             <Card
               image={image}
               description={description}
