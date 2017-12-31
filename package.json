@@ -4,12 +4,14 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.0.0-beta.2",
+    "classnames": "^2.2.5",
     "jquery": "^1.9.1",
     "lodash": "^4.17.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.0.17",
-    "reactstrap": "^5.0.0-alpha.4"
+    "reactstrap": "^5.0.0-alpha.4",
+    "uid": "^0.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

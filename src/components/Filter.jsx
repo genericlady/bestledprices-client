@@ -1,11 +1,27 @@
 import React, { Component } from 'react';
+import uid from 'uid';
+import classNames from 'classnames'
 
 class Filter extends Component {
-  sortBy = (type) => {
+  state = {
+    selectedButton: 0,
+  }
+
+  renderClassName = (index) => {
+    const { selectedButton } = this.state;
+    return classNames({
+      "btn btn-secondary btn-block": true,
+      "active": selectedButton === Number(index),
+    });
+  }
+
+  sortBy = (type, { target }) => {
     const {
       priceList = [],
       updateFilteredPriceList = () => {},
     } = this.props;
+    const { value } = target;
+    this.setState({ selectedButton: Number(value) });
 
     switch (type) {
       case 'priceLowToHigh':
@@ -22,29 +38,26 @@ class Filter extends Component {
   }
 
   render() {
+    const buttons = [
+      { type: 'relevance', label: 'Sort By Relevance' },
+      { type: 'priceLowToHigh', label: '$ - $$$$' },
+      { type: 'priceHighToLow', label: '$$$$ - $' },
+    ].map(({ type, label }, index) => (
+      <button
+        key={uid()}
+        value={index}
+        onClick={(event) => this.sortBy(type, event)}
+        type="button"
+        className={this.renderClassName(index)}
+      >
+        { label }
+      </button>
+    ));
+
     return (
-      <div className="btn-group" role="group" aria-label="Filter">
-        <button
-          onClick={() => this.sortBy('relevance')}
-          type="button"
-          className="btn btn-secondary"
-        >
-          Relevance
-        </button>
-        <button
-          onClick={() => this.sortBy('priceLowToHigh')}
-          type="button"
-          className="btn btn-secondary"
-        >
-          $ - $$$$
-        </button>
-        <button
-          onClick={() => this.sortBy('priceHighToLow')}
-          type="button"
-          className="btn btn-secondary"
-        >
-          $$$$ - $
-        </button>
+      <div role="group" aria-label="Filter">
+        <h1>Sort By</h1>
+        { buttons }
       </div>
     );
   }
