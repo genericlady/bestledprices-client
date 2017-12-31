@@ -15,12 +15,11 @@ class Filter extends Component {
     });
   }
 
-  sortBy = (type, { target }) => {
+  sortBy = (type, { target: { value } }) => {
     const {
       priceList = [],
       updateFilteredPriceList = () => {},
     } = this.props;
-    const { value } = target;
     this.setState({ selectedButton: Number(value) });
 
     switch (type) {

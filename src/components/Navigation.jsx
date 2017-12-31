@@ -38,6 +38,12 @@ export default class Navigation extends React.Component {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarColor03">
+          {
+            /**
+             * The following <ul> is meant for any links to be added.
+             */
+          }
+          <ul className="navbar-nav mr-auto" />
           <form className="form-inline my-2 my-lg-0">
             <input
               className="form-control mr-sm-2"
