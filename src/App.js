@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { isEmpty } from 'lodash';
+import { shuffle, isEmpty } from 'lodash';
 import './App.css';
 import Navigation from './components/Navigation';
 import PriceList from './components/PriceList';
@@ -33,11 +33,16 @@ class App extends Component {
   };
 
   componentDidMount() {
+    const randomQuery = shuffle([
+      'neopixel ring',
+      'teensy',
+      'arduino',
+    ]).pop()
     /**
      * Do a default search for NeoPixel Ring to
      * populate the landing page with some items.
      */
-    fetchPrices('neopixel ring')
+    fetchPrices(randomQuery)
       .then(({ priceList }) => this.setLists(priceList)) 
   }
 
