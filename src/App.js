@@ -6,8 +6,16 @@ import PriceList from './components/PriceList';
 import Filter from './components/Filter';
 import LayoutOptions from './components/LayoutOptions';
 import { fetchPrices } from './utilities/';
+import { fetchPricesMock } from './mocks/';
 
 class App extends Component {
+  /**
+   * Ideally when using deployment it's
+   * better to get this value from your
+   * system environment.
+   */
+  static mock = true;
+
   state = {
     priceList: [],
     filteredList: [],
@@ -31,7 +39,12 @@ class App extends Component {
     } = this.state;
 
     this.setState({ loading: true });
-    fetchPrices(query).then(({ priceList }) => this.setLists(priceList));
+    if (this.mock) {
+      const priceList = fetchPricesMock();
+      this.setLists(priceList);
+    } else {
+      fetchPrices(query).then(({ priceList }) => this.setLists(priceList));
+    }
   };
 
   setLayout = (layout) => {
@@ -49,8 +62,13 @@ class App extends Component {
      * Do a default search for NeoPixel Ring to
      * populate the landing page with some items.
      */
-    fetchPrices(randomQuery)
-      .then(({ priceList }) => this.setLists(priceList));
+    if (this.mock) {
+      const priceList = fetchPricesMock();
+      this.setLists(priceList);
+    } else {
+      fetchPrices(randomQuery)
+        .then(({ priceList }) => this.setLists(priceList));
+    }
   }
 
   updateFilteredPriceList = (filteredList) => {

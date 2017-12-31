@@ -1,6 +1,6 @@
 # To Build
-- [ ] Mocks
-- [ ] add constant of MOCKS to
+- [x] Mocks
+- [x] add static of mock to
       be a boolean. This flag
       will be used to use a mock
       instead of fetching from
