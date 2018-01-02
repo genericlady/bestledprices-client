@@ -59,7 +59,7 @@ class App extends Component {
     ]).pop();
 
     /**
-     * Do a default search for NeoPixel Ring to
+     * Do a default search for something random to
      * populate the landing page with some items.
      */
     if (this.mock) {
