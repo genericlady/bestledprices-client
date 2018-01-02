@@ -3,6 +3,14 @@ import { string, arrayOf, shape } from 'prop-types';
 import PriceGrid from './PriceGrid';
 import PriceTable from './PriceTable';
 
+/**
+ * This class should be treated like a Factory.
+ * It's only concern is to produce the price list
+ * in a variety of layouts.
+ *
+ * @class
+ * @kind component
+ */
 export default class PriceList extends React.Component {
   static defaultProps = {
     priceList: [{}],
@@ -19,13 +27,6 @@ export default class PriceList extends React.Component {
       priceList,
       layout,
     } = this.props;
-
-    /**
-     * There should be a conditional render for
-     * a const of list. We can use a 
-     * layout factory to render the list as
-     * grid or table.
-     */
 
     return (
       <div>
