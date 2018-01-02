@@ -15,7 +15,7 @@ const PriceGrid = ({
        * one or two cards are going to be bigger than the rest.
        */
       const count = 3 - group.length;
-      if (count !== 0) {
+      if (count > 0) {
         for (let i=1; i <= count; i++) {
           group.push({ image: '', description: '', price: '', href: '', merchant: ''});
         }
