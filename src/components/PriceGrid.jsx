@@ -1,5 +1,5 @@
 import React from 'react';
-import uid from 'uid';
+import { uid } from 'uid';
 import Card from './Card';
 import { chunk } from 'lodash';
 

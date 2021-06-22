@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { arrayOf, shape, func } from 'prop-types';
-import uid from 'uid';
+import { uid } from 'uid';
 import classNames from 'classnames'
 
 class Filter extends Component {

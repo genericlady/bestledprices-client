@@ -1,7 +1,7 @@
 import React from 'react';
 import { arrayOf, shape } from 'prop-types';
 import { Table } from 'reactstrap';
-import uid from 'uid';
+import { uid } from 'uid';
 
 export default class PriceTable extends React.Component {
   render() {

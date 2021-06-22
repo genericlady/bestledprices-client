@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { string, func } from 'prop-types';
 import classNames from 'classnames';
-import uid from 'uid';
+import { uid } from 'uid';
 
 class LayoutOptions extends Component {
   static defaultProps = {
@@ -49,7 +49,7 @@ class LayoutOptions extends Component {
     ));
 
     return (
-      <div classNames="pt-3" role="group" aria-label="Layout Options">
+      <div className="pt-3" role="group" aria-label="Layout Options">
         <h1>Layout</h1>
         { buttons }
       </div>

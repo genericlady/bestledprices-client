@@ -22,6 +22,7 @@ class App extends Component {
     query: '',
     loading: true,
     layout: 'grid',
+    error: '',
   }
 
   setLists = (priceList) => {
@@ -43,7 +44,14 @@ class App extends Component {
       const priceList = fetchPricesMock();
       this.setLists(priceList);
     } else {
-      fetchPrices(query).then(({ priceList }) => this.setLists(priceList));
+      fetchPrices(query)
+        .then(({ priceList }) => this.setLists(priceList))
+        .catch(error => this.setState(
+          {
+            error: 'We had trouble fetching prices',
+            loading: false,
+          }
+         ));
     }
   };
 
@@ -67,7 +75,13 @@ class App extends Component {
       this.setLists(priceList);
     } else {
       fetchPrices(randomQuery)
-        .then(({ priceList }) => this.setLists(priceList));
+        .then(({ priceList }) => this.setLists(priceList))
+        .catch(error => this.setState(
+          {
+            error: 'We had trouble fetching prices',
+            loading: false,
+          }
+         ));
     }
   }
 
@@ -86,6 +100,7 @@ class App extends Component {
       filteredList,
       loading,
       layout,
+      error,
     } = this.state;
 
     return (
@@ -93,12 +108,24 @@ class App extends Component {
         <Navigation getPrices={this.getPrices} handleChange={this.handleChange}/>
         {
           loading &&
-            <div classNames="pt-3">
+            <div className="pt-3">
               <h1 className="text-center">Loading...</h1>
               <div className="text-center">
                 <img
                   src="https://i.giphy.com/10NI9u4qOWNdmw.gif"
                   alt="loading"
+                />
+              </div>
+            </div>
+        }
+        {
+          error &&
+            <div className="pt-3">
+              <h1 className="text-center">{error}</h1>
+              <div className="text-center">
+                <img
+                  src="https://media.giphy.com/media/elHCBSN6hjvpvsQ8nn/giphy.gif"
+                  alt="error"
                 />
               </div>
             </div>
