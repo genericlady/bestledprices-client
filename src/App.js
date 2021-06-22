@@ -112,6 +112,7 @@ class App extends Component {
               <h1 className="text-center">Loading...</h1>
               <div className="text-center">
                 <img
+                  className="img-fluid"
                   src="https://i.giphy.com/10NI9u4qOWNdmw.gif"
                   alt="loading"
                 />
@@ -124,6 +125,7 @@ class App extends Component {
               <h1 className="text-center">{error}</h1>
               <div className="text-center">
                 <img
+                  className="img-fluid"
                   src="https://media.giphy.com/media/elHCBSN6hjvpvsQ8nn/giphy.gif"
                   alt="error"
                 />
