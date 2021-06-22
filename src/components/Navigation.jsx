@@ -22,7 +22,7 @@ export default class Navigation extends React.Component {
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <a className="navbar-brand">Best LED Prices</a>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler d-none"
           type="button"
           data-toggle="collapse"
           data-target="#navbarColor01"
@@ -34,38 +34,40 @@ export default class Navigation extends React.Component {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarColor01">
-          <ul className="navbar-nav mr-auto">
-            {/** the following code would be the site links.
-              * <li class="nav-item active">
-              *   <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-              * </li>
-              * <li class="nav-item">
-              *   <a class="nav-link" href="#">Features</a>
-              * </li>
-              * <li class="nav-item">
-              *   <a class="nav-link" href="#">Pricing</a>
-              * </li>
-              * <li class="nav-item">
-              *   <a class="nav-link" href="#">About</a>
-              * </li>
-              */}
+          <ul className="navbar-nav mr-auto d-none">
+            {
+              <>
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About</a>
+                </li>
+              </>
+            }
           </ul>
-          <form className="form-inline my-2 my-lg-0">
-            <input
-              className="form-control mr-sm-2"
-              type="text"
-              placeholder="Search"
-              onChange={(event) => handleChange(event)}
-            />
-            <button
-              onClick={(event) => getPrices(event)}
-              className="btn btn-secondary my-2 my-sm-0"
-              type="submit"
-            >
-              Search
-            </button>
-          </form>
         </div>
+        <form className="form-inline my-2 my-lg-0">
+          <input
+            className="form-control mr-sm-2"
+            type="text"
+            placeholder="Search"
+            onChange={(event) => handleChange(event)}
+          />
+          <button
+            onClick={(event) => getPrices(event)}
+            className="btn btn-secondary my-2 my-sm-0"
+            type="submit"
+          >
+            Search
+          </button>
+        </form>
       </nav>
     );
   }
