@@ -1,14 +1,7 @@
 # To Build
-- [x] Mocks
-- [x] add static of mock to
-      be a boolean. This flag
-      will be used to use a mock
-      instead of fetching from
-      the api thus saving us from
-      scraping data and speeding
-      up development
+- [ ] Update Node
+- [ ] Update React and any dependencies
 - [ ] Add setup instructions to README
-- [ ] Add extra details as necessary to README
 
 the following will first be stubbed out and done
 in React before adding to the backend.
@@ -18,6 +11,14 @@ in React before adding to the backend.
 - [ ] add signin
 
 # Things Built
+- [x] Mocks
+- [x] add static of mock to
+      be a boolean. This flag
+      will be used to use a mock
+      instead of fetching from
+      the api thus saving us from
+      scraping data and speeding
+      up development
 - [x] Move Filter to a Sidebar
 - [x] Add layout options to sidebar
   - [x] Layout options should be table or grid
