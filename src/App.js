@@ -21,38 +21,25 @@ export default function App() {
   const [error, setError] = useState('');
   const [layout, setLayout] = useState('grid');
 
-  const setLists = (priceList) => {
-    setPriceList(Object.freeze(priceList));
-    setFilteredList(priceList.slice());
-    setLoading(false);
-  }
-
-  const getPrices = (event) => {
-    event.preventDefault();
+  useEffect(() => {
     setLoading(true);
 
     fetchPrices(query)
-      .then(res => this.setLists(res.priceList))
+      .then(({ priceList }) => {
+        setError('');
+        setLoading(false);
+        setPriceList(Object.freeze(priceList));
+        setFilteredList(priceList.slice());
+      })
       .catch(error => {
         setError('We had trouble fetching prices');
         setLoading(false);
       });
-  };
-
-  useEffect(() => {
-    fetchPrices(query)
-      .then(res => setLists(res.priceList))
-      .catch(error => {
-        setError('We had trouble fetching prices');
-        setLoading(false);
-      });
-  }, [])
-
-  const handleChange = ({ target }) => setQuery(target.value)
+  }, [query])
 
   return (
     <div className="App">
-      <Navigation getPrices={getPrices} handleChange={handleChange}/>
+      <Navigation setQuery={setQuery} />
       {
         loading &&
           <div className="pt-3">

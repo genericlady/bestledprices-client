@@ -1,74 +1,66 @@
-import React from 'react';
-import { func } from 'prop-types';
+import { useState } from 'react';
 
-export default class Navigation extends React.Component {
-  static defaultProps = {
-    getPrices: () => {},
-    handleChange: () => {},
+export default function Navigation({ setQuery }) {
+  const [ nextQuery, setNextQuery] = useState('');
+
+  function handleChange(event) {
+    event.preventDefault();
+    setNextQuery(event.target.value);
   }
 
-  static propTypes = {
-    getPrices: func,
-    handleChange: func,
-  }
+  return (
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a className="navbar-brand">Best LED Prices</a>
+      <button
+        className="navbar-toggler d-none"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarColor01"
+        aria-controls="navbarColor01"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
 
-  render() {
-    const {
-      getPrices,
-      handleChange,
-    } = this.props;
-
-    return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a className="navbar-brand">Best LED Prices</a>
+      <div className="collapse navbar-collapse" id="navbarColor01">
+        <ul className="navbar-nav mr-auto d-none">
+          {
+            <>
+              <li className="nav-item active">
+                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">Features</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">Pricing</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">About</a>
+              </li>
+            </>
+          }
+        </ul>
+      </div>
+      <form className="form-inline my-2 my-lg-0">
+        <input
+          className="form-control mr-sm-2"
+          type="text"
+          placeholder="Search"
+          onChange={(event) => handleChange(event)}
+        />
         <button
-          className="navbar-toggler d-none"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarColor01"
-          aria-controls="navbarColor01"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          onClick={(event) => {
+            event.preventDefault();
+            setQuery(nextQuery);
+          }}
+          className="btn btn-secondary my-2 my-sm-0"
+          type="submit"
         >
-          <span className="navbar-toggler-icon"></span>
+          Search
         </button>
-
-        <div className="collapse navbar-collapse" id="navbarColor01">
-          <ul className="navbar-nav mr-auto d-none">
-            {
-              <>
-                <li className="nav-item active">
-                  <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Features</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Pricing</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">About</a>
-                </li>
-              </>
-            }
-          </ul>
-        </div>
-        <form className="form-inline my-2 my-lg-0">
-          <input
-            className="form-control mr-sm-2"
-            type="text"
-            placeholder="Search"
-            onChange={(event) => handleChange(event)}
-          />
-          <button
-            onClick={(event) => getPrices(event)}
-            className="btn btn-secondary my-2 my-sm-0"
-            type="submit"
-          >
-            Search
-          </button>
-        </form>
-      </nav>
-    );
-  }
+      </form>
+    </nav>
+  );
 }
