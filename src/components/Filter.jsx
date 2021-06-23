@@ -1,37 +1,19 @@
-import React, { Component } from 'react';
-import { arrayOf, shape, func } from 'prop-types';
+import { useState } from 'react';
 import { uid } from 'uid';
 import classNames from 'classnames'
 
-class Filter extends Component {
-  static defaultProps = {
-    priceList: [],
-    setFilteredList: () => {},
-  }
+export default function Filter({ priceList, setFilteredList }) {
+  const [selectedButton, setSelectedButton] = useState(0);
 
-  static propTypes = {
-    priceList: arrayOf(shape()).isRequired,
-    setFilteredList: func.isRequired,
-  }
-
-  state = {
-    selectedButton: 0,
-  }
-
-  renderClassName = (index) => {
-    const { selectedButton } = this.state;
+  const renderClassName = (index) => {
     return classNames({
       "btn btn-secondary btn-block": true,
       "active": selectedButton === Number(index),
     });
   }
 
-  sortBy = (type, { target: { value } }) => {
-    const {
-      priceList,
-      setFilteredList,
-    } = this.props;
-    this.setState({ selectedButton: Number(value) });
+  const sortBy = (type, { target: { value } }) => {
+    setSelectedButton(Number(value));
 
     switch (type) {
       case 'priceLowToHigh':
@@ -47,29 +29,30 @@ class Filter extends Component {
     }
   }
 
-  render() {
-    const buttons = [
-      { type: 'relevance', label: 'Sort By Relevance' },
-      { type: 'priceLowToHigh', label: '$ - $$$$' },
-      { type: 'priceHighToLow', label: '$$$$ - $' },
-    ].map(({ type, label }, index) => (
-      <button
-        key={uid()}
-        value={index}
-        onClick={(event) => this.sortBy(type, event)}
-        type="button"
-        className={this.renderClassName(index)}
-      >
-        { label }
-      </button>
-    ));
-
+  const renderButtons = () => {
     return (
-      <div role="group" aria-label="Filter">
-        <h1>Sort By</h1>
-        { buttons }
-      </div>
-    );
+      [
+        { type: 'relevance', label: 'Sort By Relevance' },
+        { type: 'priceLowToHigh', label: '$ - $$$$' },
+        { type: 'priceHighToLow', label: '$$$$ - $' },
+      ].map(({ type, label }, index) => (
+        <button
+          key={uid()}
+          value={index}
+          onClick={(event) => sortBy(type, event)}
+          type="button"
+          className={renderClassName(index)}
+        >
+          { label }
+        </button>
+      ))
+    )
   }
+
+  return (
+    <div role="group" aria-label="Filter">
+      <h1>Sort By</h1>
+      { renderButtons() }
+    </div>
+  );
 }
-export default Filter;

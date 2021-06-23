@@ -1,12 +1,10 @@
-import React from 'react';
-
-const Card = ({
+export default function Card({
   image = '',
   description = '',
   price = '',
   href = '',
   merchant = '',
-}) => {
+}) {
   return (
     <div className="card">
       <a href={href} className="card-link">
@@ -25,4 +23,3 @@ const Card = ({
     </div>
   )
 };
-export default Card;
