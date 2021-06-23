@@ -68,6 +68,7 @@ export default function App() {
           </div>
       }
       {
+        (!isEmpty(filteredList) && !loading) &&
           <div className="row">
             <div className="col-md-9">
               <PriceList priceList={filteredList} layout={layout} />
