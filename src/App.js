@@ -10,7 +10,10 @@ import { fetchPrices } from './utilities/';
 export default function App() {
   const [priceList, setPriceList] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);;
+  const [error, setError] = useState('');
+  const [layout, setLayout] = useState('grid');
+
   const [query, setQuery] =
     useState(
       shuffle([
@@ -18,8 +21,6 @@ export default function App() {
         'teensy',
         'arduino',
       ]).pop());
-  const [error, setError] = useState('');
-  const [layout, setLayout] = useState('grid');
 
   useEffect(() => {
     setLoading(true);
@@ -35,7 +36,7 @@ export default function App() {
         setError('We had trouble fetching prices');
         setLoading(false);
       });
-  }, [query])
+  }, [query]);
 
   return (
     <div className="App">
@@ -67,7 +68,6 @@ export default function App() {
           </div>
       }
       {
-        (!isEmpty(filteredList) && !loading) &&
           <div className="row">
             <div className="col-md-9">
               <PriceList priceList={filteredList} layout={layout} />
@@ -75,7 +75,7 @@ export default function App() {
             <div className="text-center col-md-2 pt-3">
               <Filter
                 priceList={priceList}
-                updateFilteredPriceList={setPriceList}
+                setFilteredList={setFilteredList}
               />
               <LayoutOptions layout={layout} setLayout={setLayout} />
             </div>

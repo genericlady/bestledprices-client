@@ -6,12 +6,12 @@ import classNames from 'classnames'
 class Filter extends Component {
   static defaultProps = {
     priceList: [],
-    updateFilteredPriceList: () => {},
+    setFilteredList: () => {},
   }
 
   static propTypes = {
     priceList: arrayOf(shape()).isRequired,
-    updateFilteredPriceList: func.isRequired,
+    setFilteredList: func.isRequired,
   }
 
   state = {
@@ -29,21 +29,21 @@ class Filter extends Component {
   sortBy = (type, { target: { value } }) => {
     const {
       priceList,
-      updateFilteredPriceList,
+      setFilteredList,
     } = this.props;
     this.setState({ selectedButton: Number(value) });
 
     switch (type) {
       case 'priceLowToHigh':
-        return updateFilteredPriceList(priceList.slice().sort((p1, p2) =>
+        return setFilteredList(priceList.slice().sort((p1, p2) =>
           Number(p1.price.replace(/\$/, '')) - Number(p2.price.replace(/\$/, '')))
         );
       case 'priceHighToLow':
-        return updateFilteredPriceList(priceList.slice().sort((p1, p2) =>
+        return setFilteredList(priceList.slice().sort((p1, p2) =>
           Number(p2.price.replace(/\$/, '')) - Number(p1.price.replace(/\$/, '')))
         );
       default:
-        updateFilteredPriceList(priceList);
+        setFilteredList(priceList);
     }
   }
 
