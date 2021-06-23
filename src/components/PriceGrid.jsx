@@ -1,14 +1,10 @@
-import React from 'react';
 import { uid } from 'uid';
-import Card from './Card';
 import { chunk } from 'lodash';
+import Card from './Card';
 
-const PriceGrid = ({
-  priceList = [],
-}) => {
-  const groups = chunk(priceList, 3);
+export default function PriceGrid({priceList = []}) {
   return (
-    groups.map((group) => {
+    chunk(priceList, 3).map((group) => {
       /**
        * This logic ensures each group has 3 elements in it for better
        * layout consistency. Otherwise if it's an odd number the final
@@ -40,4 +36,3 @@ const PriceGrid = ({
     })
   )
 }
-export default PriceGrid;
