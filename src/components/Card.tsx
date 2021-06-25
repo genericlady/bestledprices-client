@@ -1,10 +1,14 @@
-export default function Card({
-  image = '',
-  description = '',
-  price = '',
-  href = '',
-  merchant = '',
-}) {
+import React from "react";
+
+interface Props {
+  image: string,
+  description: string,
+  price: string,
+  href: string,
+  merchant: string,
+}
+
+const Card: React.FC<Props> = ({ image, description, price, href, merchant }) => {
   return (
     <div className="card">
       <a href={href} className="card-link">
@@ -23,3 +27,5 @@ export default function Card({
     </div>
   )
 };
+
+export default Card;

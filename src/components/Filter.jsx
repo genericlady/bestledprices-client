@@ -32,7 +32,7 @@ export default function Filter({ priceList, setFilteredList }) {
   const renderButtons = () => {
     return (
       [
-        { type: 'relevance', label: 'Sort By Relevance' },
+        { type: 'relevance', label: 'Relevance' },
         { type: 'priceLowToHigh', label: '$ - $$$$' },
         { type: 'priceHighToLow', label: '$$$$ - $' },
       ].map(({ type, label }, index) => (

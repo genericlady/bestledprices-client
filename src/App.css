@@ -1,1 +1,10 @@
 body { padding-top: 0 !important; }
+
+.card-grid {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.card-grid .card {
+    max-width: 250px;
+}
