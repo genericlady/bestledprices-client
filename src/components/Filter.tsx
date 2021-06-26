@@ -1,19 +1,41 @@
 import { useState } from 'react';
 import { uid } from 'uid';
-import classNames from 'classnames'
+import classNames from 'classnames';
 
-export default function Filter({ priceList, setFilteredList }) {
+interface PriceList {
+  image: string,
+  description: string,
+  price: string,
+  href: string,
+  merchant: string
+}
+
+interface Price {
+  image: string,
+  description: string,
+  price: string,
+  href: string,
+  merchant: string,
+}
+
+interface FilterProps {
+  priceList: PriceList[],
+  setFilteredList: React.Dispatch<React.SetStateAction<Price[]>>,
+}
+
+const Filter: React.FC<FilterProps> = ({ priceList, setFilteredList }) => {
   const [selectedButton, setSelectedButton] = useState(0);
 
-  const renderClassName = (index) => {
+  const renderClassName = (index: number) => {
     return classNames({
       "btn btn-secondary btn-block": true,
       "active": selectedButton === Number(index),
     });
   }
 
-  const sortBy = (type, { target: { value } }) => {
-    setSelectedButton(Number(value));
+  const sortBy = (type: string, event: React.MouseEvent) => {
+    console.log('EVENT', event);
+    setSelectedButton(Number('foo'));
 
     switch (type) {
       case 'priceLowToHigh':
@@ -56,3 +78,5 @@ export default function Filter({ priceList, setFilteredList }) {
     </div>
   );
 }
+
+export default Filter;

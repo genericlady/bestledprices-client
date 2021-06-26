@@ -7,9 +7,17 @@ import Filter from './components/Filter';
 import LayoutOptions from './components/LayoutOptions';
 import { fetchPrices } from './utilities/';
 
+interface Price {
+  image: string,
+  description: string,
+  price: string,
+  href: string,
+  merchant: string,
+}
+
 export default function App() {
-  const [priceList, setPriceList] = useState([]);
-  const [filteredList, setFilteredList] = useState([]);
+  const [priceList, setPriceList] = useState<Price[]>([]);
+  const [filteredList, setFilteredList] = useState<Price[]>([]);
   const [loading, setLoading] = useState(true);;
   const [error, setError] = useState('');
   const [layout, setLayout] = useState('grid');

@@ -5,7 +5,7 @@
   "dependencies": {
     "@types/lodash": "^4.14.170",
     "bootstrap": "5.0.x",
-    "classnames": "2.2.x",
+    "classnames": "2.3.x",
     "jquery": "3.6.x",
     "lodash": "4.17.x",
     "react": "17.0.x",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@babel/runtime": "7.14.x",
-    "@types/react": "^17.0.11",
+    "@types/react": "17.0.x",
     "typescript": "4.3.x"
   }
 }
