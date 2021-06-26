@@ -33,8 +33,8 @@ const Filter: React.FC<FilterProps> = ({ priceList, setFilteredList }) => {
     });
   }
 
-  const sortBy = (type: string, event: React.MouseEvent) => {
-    setSelectedButton(Number('foo'));
+  const sortBy = (type: string, index: number) => {
+    setSelectedButton(index);
 
     switch (type) {
       case 'priceLowToHigh':
@@ -60,7 +60,7 @@ const Filter: React.FC<FilterProps> = ({ priceList, setFilteredList }) => {
         <button
           key={uid()}
           value={index}
-          onClick={(event) => sortBy(type, event)}
+          onClick={() => sortBy(type, index)}
           type="button"
           className={renderClassName(index)}
         >
