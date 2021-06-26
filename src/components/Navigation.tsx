@@ -1,9 +1,13 @@
 import { useState } from 'react';
 
-export default function Navigation({ setQuery }) {
-  const [ nextQuery, setNextQuery] = useState('');
+interface NavigationInterface {
+  setQuery: React.Dispatch<React.SetStateAction<string | undefined>>,
+}
 
-  function handleChange(event) {
+const Navigation = ({ setQuery }: NavigationInterface) => {
+  const [ nextQuery, setNextQuery] = useState<string>('');
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     event.preventDefault();
     setNextQuery(event.target.value);
   }
@@ -64,3 +68,5 @@ export default function Navigation({ setQuery }) {
     </nav>
   );
 }
+
+export default Navigation;
