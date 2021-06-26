@@ -1,7 +1,19 @@
 import { Table } from 'reactstrap';
 import { uid } from 'uid';
 
-export default function PriceTable({ priceList }) {
+interface Price {
+  image: string,
+  description: string,
+  price: string,
+  href: string,
+  merchant: string,
+}
+
+interface PriceListInterface {
+  priceList: Price[],
+}
+
+ const PriceTable = ({ priceList }: PriceListInterface) => {
   const renderRows = () => {
     return priceList.map(({ image, description, price, href }) => (
       <tr key={uid()}>
@@ -29,3 +41,5 @@ export default function PriceTable({ priceList }) {
     </Table>
   );
 }
+
+export default PriceTable;
