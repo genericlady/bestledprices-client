@@ -1,13 +1,18 @@
 import classNames from 'classnames';
 import { uid } from 'uid';
 
-export default function LayoutOptions({ layout, setLayout }) {
+interface LayoutOptionsProps {
+  layout: string,
+  setLayout: React.Dispatch<React.SetStateAction<string>>,
+}
 
-  const handleClick = (value) => {
+const LayoutOptions = ({ layout, setLayout }: LayoutOptionsProps) => {
+
+  const handleClick = (value: string) => {
     setLayout(value);
   }
 
-  const renderClassName = (value) => {
+  const renderClassName = (value: string) => {
     return classNames({
       "btn btn-secondary btn-block": true,
       "active": layout === value,
@@ -38,3 +43,5 @@ export default function LayoutOptions({ layout, setLayout }) {
     </div>
   );
 };
+
+export default LayoutOptions;
