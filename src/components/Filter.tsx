@@ -34,7 +34,6 @@ const Filter: React.FC<FilterProps> = ({ priceList, setFilteredList }) => {
   }
 
   const sortBy = (type: string, event: React.MouseEvent) => {
-    console.log('EVENT', event);
     setSelectedButton(Number('foo'));
 
     switch (type) {
