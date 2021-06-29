@@ -7,19 +7,7 @@ import Card from "../Card";
 
 let container: null | HTMLElement = null;
 
-// beforeEach(() => {
-//   // setup a DOM element as a render target
-//   container = document.createElement("div");
-//   document.body.appendChild(container);
-// });
-
 afterEach(cleanup);
-// afterEach(() => {
-//   // cleanup on exiting
-//   unmountComponentAtNode(container);
-//   container!.remove();
-//   container = null;
-// });
 
 test("Displays information about the item.", () => {
   const props = {
