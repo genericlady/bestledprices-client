@@ -4,7 +4,6 @@ import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import Card from "../Card";
-import { describe } from "yargs";
 
 let container: null | HTMLDivElement = null;
 
