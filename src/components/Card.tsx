@@ -20,8 +20,8 @@ const Card: React.FC<Props> = ({ image, description, price, href, merchant }) =>
       { 
         (price && merchant) &&
         <div className="card-footer">
-          <p className="card-text">{price}</p>
-          <p className="card-text">{merchant}</p>
+          <p className="card-text card-price">{price}</p>
+          <p className="card-text card-merchant">{merchant}</p>
         </div>
       }
     </div>
