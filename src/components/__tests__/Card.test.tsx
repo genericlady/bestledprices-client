@@ -1,24 +1,25 @@
 import React from "react";
 // import { render, fireEvent, waitForElement } from "@testing-library/react";
 // import { tsMethodSignature } from "@babel/types";
-import { render, unmountComponentAtNode } from "react-dom";
+import { render, cleanup} from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import Card from "../Card";
 
-let container: null | HTMLDivElement = null;
+let container: null | HTMLElement = null;
 
-beforeEach(() => {
-  // setup a DOM element as a render target
-  container = document.createElement("div");
-  document.body.appendChild(container);
-});
+// beforeEach(() => {
+//   // setup a DOM element as a render target
+//   container = document.createElement("div");
+//   document.body.appendChild(container);
+// });
 
-afterEach(() => {
-  // cleanup on exiting
-  unmountComponentAtNode(container);
-  container!.remove();
-  container = null;
-});
+afterEach(cleanup);
+// afterEach(() => {
+//   // cleanup on exiting
+//   unmountComponentAtNode(container);
+//   container!.remove();
+//   container = null;
+// });
 
 test("Displays information about the item.", () => {
   const props = {
@@ -29,7 +30,7 @@ test("Displays information about the item.", () => {
     merchant: "Adafruit",
   }
   act(() => {
-    render(<Card {...props} />, container);
+    ({ container } = render(<Card {...props} />));
   });
 
   expect(container!.querySelector(".card-link")!.getAttribute("href")).toBe(props.href);
