@@ -1,14 +1,7 @@
 import React from "react";
+import { Price } from "./interfaces/index";
 
-interface Props {
-  image: string,
-  description: string,
-  price: string,
-  href: string,
-  merchant: string,
-}
-
-const Card: React.FC<Props> = ({ image, description, price, href, merchant }) => {
+const Card: React.FC<Price> = ({ image, description, price, href, merchant }) => {
   return (
     <div className="card">
       <a href={href} className="card-link">

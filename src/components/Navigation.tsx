@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 interface NavigationInterface {
   setQuery: React.Dispatch<React.SetStateAction<string | undefined>>,

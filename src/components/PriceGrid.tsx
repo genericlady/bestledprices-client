@@ -1,20 +1,9 @@
 import React from "react";
 import { uid } from "uid";
 import Card from "./Card";
+import { PriceListInterface } from "./interfaces";
 
-interface PriceList {
-  image: string,
-  description: string,
-  price: string,
-  href: string,
-  merchant: string
-}
-
-interface PriceGridProps {
-  priceList: PriceList[],
-}
-
-const PriceGrid: React.FC<PriceGridProps> = ({ priceList = [] }) => {
+const PriceGrid: React.FC<PriceListInterface> = ({ priceList = [] }) => {
   return (
     <div className="card-grid" key={uid()}>
       {priceList.map(props => <Card {...props} key={uid()} />)}

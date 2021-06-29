@@ -1,17 +1,6 @@
-import { Table } from 'reactstrap';
-import { uid } from 'uid';
-
-interface Price {
-  image: string,
-  description: string,
-  price: string,
-  href: string,
-  merchant: string,
-}
-
-interface PriceListInterface {
-  priceList: Price[],
-}
+import { Table } from "reactstrap";
+import { uid } from "uid";
+import { PriceListInterface } from "./interfaces/index";
 
  const PriceTable = ({ priceList }: PriceListInterface) => {
   const renderRows = () => {

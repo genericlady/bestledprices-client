@@ -1,13 +1,6 @@
-import PriceGrid from './PriceGrid';
-import PriceTable from './PriceTable';
-
-interface Price {
-  image: string,
-  description: string,
-  price: string,
-  href: string,
-  merchant: string,
-}
+import PriceGrid from "./PriceGrid";
+import PriceTable from "./PriceTable";
+import {Price} from "./interfaces/index";
 
 interface PriceListProps {
   priceList: Price[],

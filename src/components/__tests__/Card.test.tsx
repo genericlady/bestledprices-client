@@ -1,8 +1,4 @@
-import React from "react";
-// import { render, fireEvent, waitForElement } from "@testing-library/react";
-// import { tsMethodSignature } from "@babel/types";
 import { render, cleanup} from "@testing-library/react";
-import { act } from "react-dom/test-utils";
 import Card from "../Card";
 
 afterEach(cleanup);

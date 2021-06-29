@@ -1,25 +1,10 @@
-import { useState } from 'react';
-import { uid } from 'uid';
-import classNames from 'classnames';
-
-interface PriceList {
-  image: string,
-  description: string,
-  price: string,
-  href: string,
-  merchant: string
-}
-
-interface Price {
-  image: string,
-  description: string,
-  price: string,
-  href: string,
-  merchant: string,
-}
+import { useState } from "react";
+import { uid } from "uid";
+import classNames from "classnames";
+import { Price } from "./interfaces/index";
 
 interface FilterProps {
-  priceList: PriceList[],
+  priceList: Price[],
   setFilteredList: React.Dispatch<React.SetStateAction<Price[]>>,
 }
 

@@ -1,5 +1,5 @@
-import classNames from 'classnames';
-import { uid } from 'uid';
+import classNames from "classnames";
+import { uid } from "uid";
 
 interface LayoutOptionsProps {
   layout: string,
