@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { uid } from "uid";
 import classNames from "classnames";
-import { Price, FilterOption } from "./interfaces/index";
+import { FilterOption } from "./interfaces/index";
 
 interface FilterProps {
   filterOptions: FilterOption[],
