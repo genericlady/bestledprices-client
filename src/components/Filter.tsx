@@ -22,10 +22,9 @@ const Filter: React.FC<FilterProps> = ({ handleFilter, filterOptions }) => {
 
   const renderButtons = () => {
     return (
-      filterOptions.map((filterOption, index) => (
+      filterOptions.map(filterOption => (
         <button
           key={uid()}
-          value={index}
           onClick={() => setSelectedFilterOption(filterOption)}
           type="button"
           className={renderClassName(filterOption)}
