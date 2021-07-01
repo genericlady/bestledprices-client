@@ -9,3 +9,8 @@ export interface Price {
 export interface PriceListInterface {
   priceList: Price[],
 }
+
+export interface FilterOption {
+  type: string,
+  label: string,
+}

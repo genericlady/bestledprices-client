@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
-import { shuffle, isEmpty } from 'lodash';
-import './App.css';
-import Navigation from './components/Navigation';
-import PriceList from './components/PriceList';
-import Filter from './components/Filter';
-import LayoutOptions from './components/LayoutOptions';
-import { fetchPrices } from './utilities/';
+import { useEffect, useState } from "react";
+import { shuffle, isEmpty } from "lodash";
+import "./App.css";
+import Navigation from "./components/Navigation";
+import PriceList from "./components/PriceList";
+import Filter from "./components/Filter";
+import LayoutOptions from "./components/LayoutOptions";
+import { fetchPrices } from "./utilities/";
+import { FilterOption } from "./components/interfaces/index";
 
 interface Price {
   image: string,
@@ -19,29 +20,50 @@ export default function App() {
   const [priceList, setPriceList] = useState<Price[]>([]);
   const [filteredList, setFilteredList] = useState<Price[]>([]);
   const [loading, setLoading] = useState(true);;
-  const [error, setError] = useState('');
-  const [layout, setLayout] = useState('grid');
-
+  const [error, setError] = useState("");
+  const [layout, setLayout] = useState("grid");
+  const [filterOptions] = useState([
+    { type: "relevance", label: "Relevance" },
+    { type: "priceLowToHigh", label: "$ - $$$$" },
+    { type: "priceHighToLow", label: "$$$$ - $" },
+  ]);
   const [query, setQuery] =
     useState(
       shuffle([
-        'neopixel ring',
-        'teensy',
-        'arduino',
+        "neopixel ring",
+        "teensy",
+        "arduino",
       ]).pop());
+
+  const handleFilter = (filterOption: FilterOption) => {
+    switch (filterOption.type) {
+      case "priceLowToHigh":
+        return setFilteredList(priceList.slice().sort((p1, p2) =>
+          Number(p1.price.replace(/\$/, "")) - Number(p2.price.replace(/\$/, "")))
+        );
+      case "priceHighToLow":
+        return setFilteredList(priceList.slice().sort((p1, p2) =>
+          Number(p2.price.replace(/\$/, "")) - Number(p1.price.replace(/\$/, "")))
+        );
+      case "relevance":
+        return setFilteredList(priceList);
+      default:
+        return;
+    }
+  }
 
   useEffect(() => {
     setLoading(true);
 
     fetchPrices(query)
       .then(({ priceList }) => {
-        setError('');
+        setError("");
         setLoading(false);
         setPriceList(Object.freeze(priceList));
         setFilteredList(priceList.slice());
       })
       .catch(error => {
-        setError('We had trouble fetching prices');
+        setError("We had trouble fetching prices");
         setLoading(false);
       });
   }, [query]);
@@ -83,8 +105,8 @@ export default function App() {
             </div>
             <div className="text-center col-md-2 pt-3">
               <Filter
-                priceList={priceList}
-                setFilteredList={setFilteredList}
+                handleFilter={handleFilter}
+                filterOptions={filterOptions}
               />
               <LayoutOptions layout={layout} setLayout={setLayout} />
             </div>

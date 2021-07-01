@@ -6,7 +6,7 @@ afterEach(cleanup);
 test("Displays information about the item.", () => {
   const props = {
     image: "https://foobar.com/baz.png",
-    description: "a might fine thing",
+    description: "a mighty fine thing",
     price: "$10.00",
     href: "https://foobar.com/baz",
     merchant: "Adafruit",
