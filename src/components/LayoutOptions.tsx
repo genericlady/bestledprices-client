@@ -21,8 +21,8 @@ const LayoutOptions = ({ layout, setLayout }: LayoutOptionsProps) => {
 
   const renderButtons = () => {
     return [
-      { type: 'fa-th', value: 'grid' },
-      { type: 'fa-table', value: 'table' },
+      { type: "fa-th", value: "grid" },
+      { type: "fa-table", value: "table" },
     ].map(({ type, value }) => (
       <button
         key={uid()}
