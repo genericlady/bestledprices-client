@@ -5,7 +5,7 @@ import { PriceListInterface } from "./interfaces/index";
  const PriceTable = ({ priceList }: PriceListInterface) => {
   const renderRows = () => {
     return priceList.map(({ image, description, price, href }) => (
-      <tr key={uid()}>
+      <tr key={uid()} className="price-row">
         <th scope="row"><img src={image} alt={description} /></th>
         <td>{description}</td>
         <td>{price}</td>
