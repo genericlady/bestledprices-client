@@ -3,7 +3,7 @@ import Navigation from "../Navigation";
 
 afterEach(cleanup);
 
-describe("A set of options meant to determine that layout of the rendered price list.", () => {
+describe("Navigation for the website.", () => {
   it("has an input field to search for led hardware prices.", () => {
     const setQuery = jest.fn();
     const { container } = render(<Navigation setQuery={setQuery} />);

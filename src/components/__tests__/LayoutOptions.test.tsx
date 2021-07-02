@@ -3,7 +3,7 @@ import LayoutOptions from "../LayoutOptions";
 
 afterEach(cleanup);
 
-describe("A set of options meant to determine that layout of the rendered price list.", () => {
+describe("A set of options meant to determine the layout of the rendered price list.", () => {
   const setLayout = jest.fn();
 
   it("will render render buttons to change the layout to grid or table.", () => {
