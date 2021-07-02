@@ -1,28 +1,11 @@
 import { render, cleanup} from "@testing-library/react";
 import Filter from "../Filter";
+import { priceList } from "../mocks/index"
 
 afterEach(cleanup);
 
-
 describe("Displays filtering options for the list of items.", () => {
   const handleFilter = jest.fn();
-
-  const priceList = [
-    {
-      image: "https://foobar.com/baz.png",
-      description: "a mighty fine thing",
-      price: "$10.00",
-      href: "https://foobar.com/baz",
-      merchant: "Adafruit"
-    },
-    {
-      image: "https://foobar.com/baz.png",
-      description: "a mighty fine thing",
-      price: "$10.00",
-      href: "https://foobar.com/baz",
-      merchant: "Adafruit"
-    },
-  ]
 
   const props = {
     priceList,
