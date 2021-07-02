@@ -6,20 +6,12 @@ import PriceList from "./components/PriceList";
 import Filter from "./components/Filter";
 import LayoutOptions from "./components/LayoutOptions";
 import { fetchPrices } from "./utilities/";
-import { FilterOption } from "./components/interfaces/index";
-
-interface Price {
-  image: string,
-  description: string,
-  price: string,
-  href: string,
-  merchant: string,
-}
+import { Price, FilterOption } from "./components/interfaces/index";
 
 export default function App() {
   const [priceList, setPriceList] = useState<Price[]>([]);
   const [filteredList, setFilteredList] = useState<Price[]>([]);
-  const [loading, setLoading] = useState(true);;
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [layout, setLayout] = useState("grid");
   const [filterOptions] = useState([

@@ -59,7 +59,7 @@ const Navigation = ({ setQuery }: NavigationInterface) => {
             event.preventDefault();
             setQuery(nextQuery);
           }}
-          className="btn btn-secondary my-2 my-sm-0"
+          className="btn btn-secondary my-2 my-sm-0 search-submit"
           type="submit"
         >
           Search
