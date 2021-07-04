@@ -2,22 +2,22 @@ import { useEffect, useState } from "react";
 import { shuffle, isEmpty } from "lodash";
 import "./App.css";
 import Navigation from "./components/Navigation";
-import PriceList from "./components/PriceList";
+import ProductList from "./components/ProductList";
 import Filter from "./components/Filter";
 import LayoutOptions from "./components/LayoutOptions";
-import { fetchPrices } from "./utilities/";
-import { Price, FilterOption } from "./components/interfaces/index";
+import { fetchProducts } from "./utilities/";
+import { Product, FilterOption } from "./components/interfaces/index";
 
 export default function App() {
-  const [priceList, setPriceList] = useState<Price[]>([]);
-  const [filteredList, setFilteredList] = useState<Price[]>([]);
+  const [productList, setProductList] = useState<Product[]>([]);
+  const [filteredList, setFilteredList] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [layout, setLayout] = useState("grid");
   const [filterOptions] = useState([
     { type: "relevance", label: "Relevance" },
-    { type: "priceLowToHigh", label: "$ - $$$$" },
-    { type: "priceHighToLow", label: "$$$$ - $" },
+    { type: "productLowToHigh", label: "$ - $$$$" },
+    { type: "productHighToLow", label: "$$$$ - $" },
   ]);
   const [query, setQuery] =
     useState(
@@ -29,16 +29,16 @@ export default function App() {
 
   const handleFilter = (filterOption: FilterOption) => {
     switch (filterOption.type) {
-      case "priceLowToHigh":
-        return setFilteredList(priceList.slice().sort((p1, p2) =>
+      case "productLowToHigh":
+        return setFilteredList(productList.slice().sort((p1, p2) =>
           Number(p1.price.replace(/\$/, "")) - Number(p2.price.replace(/\$/, "")))
         );
-      case "priceHighToLow":
-        return setFilteredList(priceList.slice().sort((p1, p2) =>
+      case "productHighToLow":
+        return setFilteredList(productList.slice().sort((p1, p2) =>
           Number(p2.price.replace(/\$/, "")) - Number(p1.price.replace(/\$/, "")))
         );
       case "relevance":
-        return setFilteredList(priceList);
+        return setFilteredList(productList);
       default:
         return;
     }
@@ -47,15 +47,15 @@ export default function App() {
   useEffect(() => {
     setLoading(true);
 
-    fetchPrices(query)
-      .then(({ priceList }) => {
+    fetchProducts(query)
+      .then(({ data }) => {
         setError("");
         setLoading(false);
-        setPriceList(Object.freeze(priceList));
-        setFilteredList(priceList.slice());
+        setProductList(Object.freeze(data));
+        setFilteredList(data.slice());
       })
       .catch(error => {
-        setError("We had trouble fetching prices");
+        setError("We had trouble fetching products");
         setLoading(false);
       });
   }, [query]);
@@ -93,7 +93,7 @@ export default function App() {
         (!isEmpty(filteredList) && !loading) &&
           <div className="row">
             <div className="col-md-9">
-              <PriceList priceList={filteredList} layout={layout} />
+              <ProductList productList={filteredList} layout={layout} />
             </div>
             <div className="text-center col-md-2 pt-3">
               <Filter

@@ -1,6 +1,8 @@
-export const fetchPrices = (query: string | undefined) => (
+export const fetchProducts = (query: string | undefined) => (
   fetch(`http://localhost:3000/search/${query}`)
-    .then(response => response.json())
+    .then(response => {
+      return response.json();
+    })
     .catch(fail => console.log(fail))
 )
 

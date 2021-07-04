@@ -1,12 +1,12 @@
 import { Table } from "reactstrap";
 import { uid } from "uid";
-import { PriceListInterface } from "./interfaces/index";
+import { ProductListInterface } from "./interfaces/index";
 
- const PriceTable = ({ priceList }: PriceListInterface) => {
+ const TableLayout = ({ productList }: ProductListInterface) => {
   const renderRows = () => {
-    return priceList.map(({ image, description, price, href }) => (
-      <tr key={uid()} className="price-row">
-        <th scope="row"><img src={image} alt={description} /></th>
+    return productList.map(({ image, video, description, price, href }) => (
+      <tr key={uid()} className="product-row">
+        <th scope="row"><img src={image.src} alt={description} /></th>
         <td>{description}</td>
         <td>{price}</td>
         <td><a href={href}>link to product</a></td>
@@ -20,7 +20,7 @@ import { PriceListInterface } from "./interfaces/index";
         <tr>
           <th>Image</th>
           <th>Description</th>
-          <th>Price</th>
+          <th>Product</th>
           <th>Href</th>
         </tr>
       </thead>
@@ -31,4 +31,4 @@ import { PriceListInterface } from "./interfaces/index";
   );
 }
 
-export default PriceTable;
+export default TableLayout;

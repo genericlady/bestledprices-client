@@ -14,7 +14,7 @@ const Navigation = ({ setQuery }: NavigationInterface) => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a className="navbar-brand">Best LED Prices</a>
+      <a className="navbar-brand">Best LED Products</a>
       <button
         className="navbar-toggler d-none"
         type="button"
