@@ -15,7 +15,7 @@ interface ProductListProps {
  */
 export default function ProductList({ productList, layout }: ProductListProps) {
   return (
-    <div>
+    <div className="product-list-container">
     {
       layout === 'grid' &&
         <GridLayout productList={productList} />

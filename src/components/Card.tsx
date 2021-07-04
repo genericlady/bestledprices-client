@@ -1,14 +1,14 @@
 import React from "react";
 import { Product } from "./interfaces/index";
 
-const Card: React.FC<Product> = ({ image, description, price, href, merchant }) => {
+const Card: React.FC<Product> = ({ image, title, price, href, merchant }) => {
   return (
     <div className="card">
       <a href={href} className="card-link">
-        <img className="card-img-top" src={image.src} alt={description} />
+        <img className="card-img-top" src={image.src} alt={title} />
       </a>
       <div className="card-body">
-        <h4 className="card-title">{description}</h4>
+        <h4 className="card-title">{title}</h4>
       </div>
       { 
         (price && merchant) &&

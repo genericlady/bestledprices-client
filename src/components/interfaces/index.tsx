@@ -14,6 +14,7 @@ export interface Product {
   description: string,
   price: string,
   href: string,
+  title: string,
   merchant: string,
 }
 

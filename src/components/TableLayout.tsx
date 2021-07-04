@@ -4,10 +4,12 @@ import { ProductListInterface } from "./interfaces/index";
 
  const TableLayout = ({ productList }: ProductListInterface) => {
   const renderRows = () => {
-    return productList.map(({ image, video, description, price, href }) => (
+    return productList.map(({ image, video, title, price, href }) => (
       <tr key={uid()} className="product-row">
-        <th scope="row"><img src={image.src} alt={description} /></th>
-        <td>{description}</td>
+        <th scope="row">
+          <img src={image.src} alt={title} />
+        </th>
+        <td>{title}</td>
         <td>{price}</td>
         <td><a href={href}>link to product</a></td>
       </tr>

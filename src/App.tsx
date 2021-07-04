@@ -91,18 +91,16 @@ export default function App() {
       }
       {
         (!isEmpty(filteredList) && !loading) &&
-          <div className="row">
-            <div className="col-md-9">
-              <ProductList productList={filteredList} layout={layout} />
-            </div>
-            <div className="text-center col-md-2 pt-3">
+          <section className="price-list-section">
+            <ProductList productList={filteredList} layout={layout} />
+            <aside className="price-list-sidebar">
               <Filter
                 handleFilter={handleFilter}
                 filterOptions={filterOptions}
               />
               <LayoutOptions layout={layout} setLayout={setLayout} />
-            </div>
-          </div>
+            </aside>
+          </section>
       }
     </div>
   );

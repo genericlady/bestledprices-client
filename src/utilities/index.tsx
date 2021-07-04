@@ -5,4 +5,3 @@ export const fetchProducts = (query: string | undefined) => (
     })
     .catch(fail => console.log(fail))
 )
-

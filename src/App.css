@@ -6,5 +6,24 @@ body { padding-top: 0 !important; }
 }
 
 .card-grid .card {
+    margin: .6rem auto 0;
     max-width: 250px;
+}
+
+.price-list-section {
+  display: flex;
+  flex-flow: row wrap;
+  margin: auto;
+  max-width: 1024px;
+}
+
+.price-list-sidebar {
+  margin: auto;
+  margin-top: 2.4rem;
+  max-width: 250px;
+  text-align: center;
+}
+
+.product-list-container {
+  max-width: 768px;
 }
