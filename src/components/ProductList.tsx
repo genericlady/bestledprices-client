@@ -17,11 +17,11 @@ export default function ProductList({ productList, layout }: ProductListProps) {
   return (
     <div className="product-list-container">
     {
-      layout === 'grid' &&
+      layout === "grid" &&
         <GridLayout productList={productList} />
     }
     {
-      layout === 'table' &&
+      layout === "table" &&
         <TableLayout productList={productList} />
     }
     </div>
