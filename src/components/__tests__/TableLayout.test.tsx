@@ -1,13 +1,13 @@
 import { render, cleanup} from "@testing-library/react";
-import { priceList } from "../mocks/index"
-import PriceTable from "../PriceTable";
+import { productList } from "../mocks/index"
+import TableLayout from "../TableLayout";
 
 afterEach(cleanup);
 
-describe("Table style layout for rendering prices of led hardware.", () => {
-  it("has an input field to search for led hardware prices.", () => {
-    const { container } = render(<PriceTable priceList={priceList} />);
+describe("Table style layout for rendering products of led hardware.", () => {
+  it("has an input field to search for led hardware products.", () => {
+    const { container } = render(<TableLayout productList={productList.data} />);
 
-    expect(container.querySelectorAll('.price-row').length).toEqual(priceList.length);
+    expect(container.querySelectorAll('.product-row').length).toEqual(productList.data.length);
   });
 });
