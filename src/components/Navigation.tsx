@@ -5,7 +5,7 @@ interface NavigationInterface {
 }
 
 const Navigation = ({ setQuery }: NavigationInterface) => {
-  const [ nextQuery, setNextQuery] = useState<string>('');
+  const [ nextQuery, setNextQuery] = useState<string>("");
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     event.preventDefault();
